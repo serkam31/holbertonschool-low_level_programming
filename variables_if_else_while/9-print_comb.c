@@ -1,6 +1,6 @@
 #include<stdio.h>
 /**
- * main - Prints all single digit numbers of base 10 separated by comma and space
+ * main - Prints digit numbers of base 10 separated by comma and space
  * Return: Always 0 (Success)
  */
 int main(void)
