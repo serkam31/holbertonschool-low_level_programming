@@ -6,7 +6,7 @@ void times_table(void)
 {
 	int n, x, multiple;
 
-	for (n = 0; x <= 9; n++)
+	for (n = 0; n <= 9; n++)
 	{
 		for (x = 0; x <= 9; x++)
 		{
