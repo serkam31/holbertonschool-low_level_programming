@@ -1,7 +1,8 @@
-#include"main.h"
+#include "main.h"
 /**
- * 
- * 
+ * _atoi - convert a string to an integer
+ * @s: pointer to the string
+ * Return: the integer represented by the string
  */
 int _atoi(char *s)
 {
@@ -9,19 +10,20 @@ int _atoi(char *s)
 	int sign = 1;
 	int result = 0;
 
-	while(s[i] != '\0' && !(s[i] >= '0' && s[i] <= '9'))
+	while (s[i] != '\0' && !(s[i] >= '0' && s[i] <= '9'))
 	{
 		if (s[i] == '-')
-		{
-			sign = - sign;
-		}
+			sign = -sign;
 		i++;
 	}
-	
+
 	while (s[i] >= '0' && s[i] <= '9')
 	{
-		result = result * 10 + (s[i] - '0');
+		if (sign == -1)
+			result = result * 10 - (s[i] - '0');
+		else
+			result = result * 10 + (s[i] - '0');
 		i++;
 	}
-	return (result * sign);
+	return (result);
 }
