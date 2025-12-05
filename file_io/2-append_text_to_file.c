@@ -1,49 +1,31 @@
 #include "main.h"
-#include <string.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 /**
- * append_text_to_file - Appends text at the end of a file
- * @filename: Name of the file
- * @text_content: NULL terminated string to add at the end
- *
- * Return: 1 on success, -1 on failure
+ * append_text_to_file - appends text at the end of a file
+ * @filename: pointer to the name of the file.
+ * @text_content: number of letters it should read and print.
+ * Return: 1
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int fd;
-	ssize_t bytes_written;
-	size_t length = 0;
+	int i = 0;
+	int file;
 
-	/* Check if filename is NULL */
 	if (filename == NULL)
 		return (-1);
 
-	/* Open file for writing (append mode), don't create if doesn't exist */
-	fd = open(filename, O_WRONLY | O_APPEND);
-	if (fd == -1)
-		return (-1);
-
-	/* If text_content is NULL, just check if file exists and is writable */
 	if (text_content == NULL)
-	{
-		close(fd);
-		return (1); /* File exists and is writable */
-	}
+		text_content = "";
 
-	/* Get length and write */
-	length = strlen(text_content);
-	bytes_written = write(fd, text_content, length);
+	while (text_content[i] != '\0')
+		i++;
 
-	/* Check if write succeeded */
-	if (bytes_written == -1 || (size_t)bytes_written != length)
-	{
-		close(fd);
+	file = open(filename, O_WRONLY | O_APPEND);
+
+	if (file == -1)
 		return (-1);
-	}
 
-	/* Success */
-	close(fd);
+	write(file, text_content, i);
+
 	return (1);
 }
