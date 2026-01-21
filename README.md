@@ -84,7 +84,7 @@ betty nom_fichier.c
 
 ## 📝 Auteur
 
-Étudiant à Holberton School - Promotion [Année]
+Étudiant à Holberton School - MARQUES Matéo
 
 ## 📄 Licence
 
